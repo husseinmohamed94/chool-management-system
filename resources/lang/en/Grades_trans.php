@@ -12,6 +12,7 @@ return [
     'save'                                          => 'save',
     'close'                                         => 'close',
     'edit'                                              => 'edit',
+    'update'                                              => 'update',
     'delete'                                              => 'delete',
     'delete_grade'                                              => 'Are you souer ? ',
 ];
