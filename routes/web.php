@@ -38,6 +38,12 @@ Route::group(
         Route::resource('Grades', 'GradeController');
 
     });
+    Route::group(['namespace'=> 'Classroom'],function (){
+        Route::resource('classroom', 'ClassroomController');
+        Route::post('dletet_all', 'ClassroomController@dletet_all')->name('dletet_all');
+        Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
+
+    });
 
 
 });

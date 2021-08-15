@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Grades;
 use  App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGrades;
+use App\Models\Classroom;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 
@@ -37,6 +38,13 @@ class GradeController extends Controller
    */
   public function store(StoreGrades $request)
   {
+    /*  if(Grade::where('Name->ar',$request->Name)->orWhere('Name->en',$request->Name_en)->exists()){
+          return  redirect()->back()->withErrors(trans('Grades_trans.exists'));
+         // toastr()->success(trans('messages.success'));
+
+      }*/
+
+
       try {
           $validated = $request->validated();
           $Grade= new Grade();
@@ -119,17 +127,25 @@ class GradeController extends Controller
    */
   public function destroy(Request $request , $id)
   {
-      try {
+
+      $my_class_id = Classroom::where('Grade_id',$request->id)->pluck('Grade_id');
+
+        if ($my_class_id->count() == 0){
+
+            $Grades= Grade::findOrFail($request->id)->delete();
+
+            toastr()->error(trans('messages.delete'));
+
+            return redirect()->route('Grades.index');
+
+        }else{
+            toastr()->error(trans('Grades_trans.delete_Grade_Error'));
+            return redirect()->route('Grades.index');
+        }
 
 
-          $Grades= Grade::findOrFail($request->id);
-          $Grades->delete();
-          toastr()->error(trans('messages.delete'));
-          return redirect()->route('Grades.index');
 
-      }catch (\Exception $e){
-          return  redirect()->back()->withErrors(['error'=>$e->getMessage()]);
-      }
+
   }
 
 }

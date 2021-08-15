@@ -1,0 +1,27 @@
+<?php
+
+return [
+        'classes'                             => 'Classs',
+        'add_class'                             => 'Add Classs',
+    'class'                                    => 'class list ',
+    'Name'                                          => 'Name',
+    'Note'                                          => 'classroom',
+    'Processes'                                     => 'Processes',
+    'add_grade'                                     => 'add grade',
+    'add_class_name_ar'                                => 'class name ar',
+    'add_class_name_en'                                => 'class name en',
+    'save'                                          => 'save',
+    'close'                                         => 'close',
+    'edit'                                              => 'edit',
+    'update'                                              => 'update',
+    'delete'                                              => 'delete',
+    'exists'                                            => 'the classroom exists ' ,
+    'option'                                            => 'select grade ',
+    'delete_grade'                                              => 'Are you souer ? ',
+    'class_Processes'                                       => 'class_Processes',
+    'delete_row'                                            => 'delete',
+    'add_row'                                            => 'add_row',
+    'name_grade'                                          =>' name grade',
+    'delete_checbox'                                      => 'delete all classes',
+    'Search_By_Grade'                                   =>'select Grade',
+];
