@@ -80,7 +80,7 @@
                             @endif
 
                                 @php $i =0; @endphp
-                             @foreach($classrooms as $classroom)
+                             @foreach($List_Classes as $classroom)
                                  @php $i++ @endphp
                          <tr>
                              <td><input value="{{$classroom->id}}" class="box1" type="checkbox"/></td>

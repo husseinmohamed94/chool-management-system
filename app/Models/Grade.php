@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
-
+use App\Models\Section;
 class Grade extends Model
 {
     use HasTranslations;
@@ -13,4 +13,8 @@ class Grade extends Model
     protected $table = 'Grades';
     public $timestamps = true;
 
+    public function Section()
+    {
+        return $this->hasMany('App\Models\Section', 'Grade_id');
+    }
 }

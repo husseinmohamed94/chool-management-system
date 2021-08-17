@@ -45,6 +45,16 @@ Route::group(
 
     });
 
+    Route::group(['namespace'=> 'Section'],function (){
+        Route::resource('Section', 'SectionController');
+
+        Route::get('classes/{id}','SectionController@getclasses');
+
+    });
+
+    Route::get('test',function (){
+        return  view('test_pg');
+    });
 
 });
 
