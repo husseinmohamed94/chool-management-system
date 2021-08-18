@@ -34,17 +34,21 @@ Route::group(
 
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
+    //***************************** Grades ***********************
+
     Route::group(['namespace'=> 'Grades'],function (){
         Route::resource('Grades', 'GradeController');
 
     });
+    //***************************** Classroom ***********************
+
     Route::group(['namespace'=> 'Classroom'],function (){
         Route::resource('classroom', 'ClassroomController');
         Route::post('dletet_all', 'ClassroomController@dletet_all')->name('dletet_all');
         Route::post('Filter_Classes', 'ClassroomController@Filter_Classes')->name('Filter_Classes');
 
     });
-
+    //***************************** Section ***********************
     Route::group(['namespace'=> 'Section'],function (){
         Route::resource('Section', 'SectionController');
 
@@ -52,9 +56,11 @@ Route::group(
 
     });
 
-    Route::get('test',function (){
-        return  view('test_pg');
-    });
+  /*  Route::group(['namespace'=> 'MyParents'],function (){
+        Route::resource('MyParents', 'MyParentController');
+    });*/
+
+    Route::view('add_Parent','livewire.show_Form');
 
 });
 
