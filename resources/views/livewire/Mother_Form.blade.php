@@ -3,7 +3,7 @@
         @endif
         <div class="col-xs-12">
             <div class="col-md-12">
-                <br>
+                </br>
 
                 <div class="form-row">
                     <div class="col">
