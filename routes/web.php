@@ -60,8 +60,15 @@ Route::group(
         Route::resource('MyParents', 'MyParentController');
     });*/
 
-    Route::view('add_Parent','livewire.show_Form');
+    //***************************** Parent ***********************
 
+    Route::view('add_Parent','livewire.show_Form');
+    //***************************** Teachers ***********************
+    Route::group(['namespace'=> 'Teachers'],function (){
+        Route::resource('Teachers', 'TeacherController');
+
+
+    });
 });
 
 

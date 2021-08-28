@@ -8,6 +8,7 @@ use App\Models\parent_Attachment;
 use App\Models\Religion;
 use App\Models\Type_Blood;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -252,8 +253,19 @@ class AddParent extends Component
         $this->currentStep = $step;
     }
     public function delete($id){
+   /*     $this->Parent_id = $id ;
+      $My_parent =  MyParent::where('id',$id)->first();
+      $parent_attachment = parent_Attachment::where('parent_id',$id)->first();
+    if(!empty($parent_attachment->parent_id)){
+        Storage::disk('parent_attachments')->delete($My_parent->id);
 
-       MyParent::findOrFail($id)->delete();
+        return redirect()->to('/add_Parent');
+    }else{
+
+        MyParent::findOrFail($id)->delete();
+        return redirect()->to('/add_Parent');
+    }*/
+        MyParent::findOrFail($id)->delete();
         return redirect()->to('/add_Parent');
     }
 

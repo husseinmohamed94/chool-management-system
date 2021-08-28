@@ -7,7 +7,7 @@ return [
     'sections'                                             =>'Sections',
     'comment'                                             =>'School safe',
     'students'                                             =>'students',
-    'teachers'                                             =>'teachers',
+    'teachers'                                             =>'teachers list',
     'list_Parents'                                         => 'list Parents',
     'Parents'                                              => 'Parents',
     'Parent'                                              => 'Parent',

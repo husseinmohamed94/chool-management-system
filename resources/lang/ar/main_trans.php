@@ -7,7 +7,7 @@ return [
         'sections'                                      => 'الاقسام',
         'comment'                                      => 'برنامج المدارس',
         'students'                                    =>'الطلاب',
-        'teachers'                                    =>'المعلمين',
+        'teachers'                                    =>'قائمة المعلمين ',
     'list_Parents'                                         => 'قائمة اولياء الامور ',
     'Parent'                                         => 'اضافة ولي امر ',
     'Parents'                                         => 'اولياء الامور ',
