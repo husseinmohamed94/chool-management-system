@@ -7,6 +7,7 @@ use App\Http\Requests\storeSection;
 use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -21,7 +22,10 @@ class SectionController extends Controller
   {
       $grades = Grade::with(['Section'])->get();
       $List_grades = Grade::all();
-      return view('pages.Section.index',compact('grades','List_grades'));
+      $teachers = Teacher::all();
+      return view('pages.Section.index',compact('grades','List_grades','teachers'));
+
+
 
   }
 
@@ -50,7 +54,7 @@ class SectionController extends Controller
           $sections->class_id = $request->Class_id;
           $sections->Status = 1;
           $sections->save();
-
+          $sections->Teachers()->attach($request->teacher_id);
 
           toastr()->success(trans('messages.success'));
           return redirect()->route('Section.index');
@@ -59,45 +63,30 @@ class SectionController extends Controller
 
       }
   }
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
+
   public function show($id)
   {
 
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
+
   public function edit($id)
   {
 
   }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
+
   public function update(storeSection $request)
   {
       try {
+
+
           $validated = $request->validated();
           $Sections = Section::findOrFail($request->id);
 
-          $sections = new Section();
-
-          $sections->Name_section = ['ar' => $request->Name_section_ar, 'en' => $request->Name_section_en];
-          $sections->Grade_id = $request->Grade_id;
-          $sections->class_id = $request->Class_id;
+          $Sections->Name_section = ['ar' => $request->Name_section_ar, 'en' => $request->Name_section_en];
+          $Sections->Grade_id = $request->Grade_id;
+          $Sections->class_id = $request->Class_id;
 
           if(isset($request->Status)) {
               $Sections->Status = 1;
@@ -106,10 +95,15 @@ class SectionController extends Controller
           }
 
 
+       // update pivot tABLE
+          if (isset($request->teacher_id)) {
+              $Sections->teachers()->sync($request->teacher_id);
+          } else {
+              $Sections->teachers()->sync(array());
+          }
 
 
-
-          $Sections->update();
+         $Sections->save();
           toastr()->success(trans('messages.Update'));
 
           return redirect()->route('Section.index');

@@ -65,7 +65,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="font-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">students</a> </li>
+                            <li> <a href="{{route('Students.create')}}">{{trans('main_trans.Add_students')}}</a> </li>
+                            <li> <a href="{{route('Students.index')}}">{{trans('main_trans.list_students')}}</a> </li>
 
                         </ul>
                     </li>

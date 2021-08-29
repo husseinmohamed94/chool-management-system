@@ -134,14 +134,14 @@
                                                                                         <div class="row">
                                                                                             <div class="col">
                                                                                                 <input type="text"
-                                                                                                       name="Name_section_Ar"
+                                                                                                       name="Name_section_ar"
                                                                                                        class="form-control"
                                                                                                        value="{{ $Listsection->getTranslation('Name_section', 'ar') }}">
                                                                                             </div>
 
                                                                                             <div class="col">
                                                                                                 <input type="text"
-                                                                                                       name="Name_section_En"
+                                                                                                       name="Name_section_en"
                                                                                                        class="form-control"
                                                                                                        value="{{ $Listsection->getTranslation('Name_section', 'en') }}">
                                                                                                 <input id="id"
@@ -211,8 +211,8 @@
                                                                                                     for="exampleCheck1">{{ trans('Section_trans.Status') }}</label><br>
                                                                                             </div>
                                                                                         </div>
-                                                                                         {{--   <div class="col">
-                                                                                                    <label for="inputName" class="control-label">{{ trans('Section_trans.Name_Teacher') }}</label>
+                                                                                            <div class="col">
+                                                                                                    <label for="inputName" class="control-label">{{ trans('Section_trans.name_teacher') }}</label>
                                                                                                     <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect2">
                                                                                                         @foreach($Listsection->teachers as $teacher)
                                                                                                             <option selected value="{{$teacher['id']}}">{{$teacher['Name']}}</option>
@@ -222,7 +222,7 @@
                                                                                                             <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
                                                                                                         @endforeach
                                                                                                     </select>
-                                                                                                </div> --}}
+                                                                                                </div>
                                                                                         <div class="modal-footer">
                                                                                             <button type="button"
                                                                                                     class="btn btn-secondary"
@@ -286,15 +286,6 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-
-
-
-
-
-
-
-
-
 
                                                                     @endforeach
                                                                 </tbody>
@@ -369,6 +360,9 @@
                             </div>
                             <br>
 
+
+
+
                             <div class="col">
                                 <label for="inputName"
                                        class="control-label">{{ trans('Section_trans.name_class') }}</label>
@@ -377,6 +371,18 @@
                                 </select>
                             </div><br>
 
+
+                            <div class="col">
+                                <label for="inputName"
+                                       class="control-label">{{ trans('Section_trans.name_teacher') }}</label>
+                                <select multiple name="teacher_id[]" class="custom-select">
+                                    <!--placeholder-->
+                                    @foreach ($teachers as $teacher)
+                                        <option value="{{ $teacher->id }}"> {{ $teacher->Name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <br>
 
                     </div>
                     <div class="modal-footer">
