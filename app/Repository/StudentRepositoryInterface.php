@@ -9,9 +9,10 @@ interface StudentRepositoryInterface{
         public function Store_studen($request);
         public function edit_studen($id);
         public function update_studen($request);
-        //public function show_studen($id);
-
-    public function destroy_studen($request);
-
+        public function show_studen($id);
+        public function destroy_studen($request);
+        public function Upload_attachment($request);
+        public function Download_attachment($studentname,$filename);
+        public function Delete_attachment($request);
 
 }

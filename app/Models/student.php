@@ -31,4 +31,10 @@ class student extends Model
     public  function myparent(){
         return $this->belongsTo('App\Models\MyParent','parent_id');
     }
+
+    //علاقة بين الطلاب والصور لجب صور الطالب
+    public function images()
+    {
+        return $this->morphMany('App\Models\Image', 'imageable');
+    }
 }

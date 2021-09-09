@@ -52,9 +52,9 @@
                                             <th scope="row">{{trans('Students_trans.Grade')}}</th>
                                             <td>{{ $Student->grade->Name }}</td>
                                             <th scope="row">{{trans('Students_trans.classrooms')}}</th>
-                                            <td>{{$Student->classroom->Name_Class}}</td>
+                                            <td>{{$Student->classroom->Name_class}}</td>
                                             <th scope="row">{{trans('Students_trans.section')}}</th>
-                                            <td>{{$Student->section->Name_Section}}</td>
+                                            <td>{{$Student->section->Name_section}}</td>
                                             <th scope="row">{{trans('Students_trans.Date_of_Birth')}}</th>
                                             <td>{{ $Student->Date_Birth}}</td>
                                         </tr>
@@ -115,7 +115,7 @@
                                                     <td colspan="2">
                                                         <a class="btn btn-outline-info btn-sm"
                                                            href="{{url('Download_attachment')}}/{{ $attachment->imageable->name }}/{{$attachment->filename}}"
-                                                           role="button"><i class="fas fa-download"></i>&nbsp; {{trans('Students_trans.Download')}}</a>
+                                                           role="button"><i class="fa fa-download"></i>&nbsp; {{trans('Students_trans.Download')}}</a>
 
                                                         <button type="button" class="btn btn-outline-danger btn-sm"
                                                                 data-toggle="modal"
