@@ -27,11 +27,16 @@ return [
     'Student_details' => 'معلومات الطالب',
     'Deleted_Student' => 'حذف بيانات الطالب',
     'Deleted_Student_tilte' => 'هل انت متأكد من حذف الطالب ؟',
+    'Deleted_graduated_Student' => 'ارجع الطالب ',
+    'graduated_Student_tilte' => 'هل انت متأكد من ارجع الطالب ؟',
     'Delete_attachment' => 'حذف مرفق',
     'Delete_attachment_tilte' => 'هل انت متأكد من حذف المرفق ؟',
     'filename' => 'اسم الملف',
     'created_at' => 'تاريخ الاضافة',
     'Download' => 'تحميل',
-    'delete' => 'حذف',
+    'delete' => '  حذف بيانات الطالب',
+    'edit'              => 'تعديل بيانات الطالب',
+    'show'              => ' عرض بيانات الطالب',
+    'show_invoices'              => ' عرض بيانات  فاتورة الطالب',
 
 ];

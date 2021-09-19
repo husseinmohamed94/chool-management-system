@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class student extends Model
 {
     use HasTranslations;
-
+    use SoftDeletes;
     protected $table = 'students';
     protected $guarded = [];
     public $translatable = ['name'];

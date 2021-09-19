@@ -76,13 +76,16 @@ Route::group(
         Route::get('Download_attachment/{studentname}/{filename}','StudentController@Download_attachment')->name('Download_attachment');
         Route::post('Delete_attachment','StudentController@Delete_attachment')->name('Delete_attachment');
 
-
-
-    });
-    Route::group(['namespace'=> 'Students'],function (){
         Route::resource('promotion', 'promotionController');
+        Route::resource('Graduated', 'GraduatedController');
+        Route::resource('Fee', 'FeeController');
+        Route::resource('FeeInvoices', 'FeeInvoiceController');
+        Route::get('/Get_amount/{id}','FeeInvoiceController@Get_amount');
 
     });
+
+
+
 
 
 });

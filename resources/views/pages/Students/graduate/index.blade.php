@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{trans('main_trans.list_students')}}
+    {{trans('main_trans.Gradutated_Students_lists')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{trans('main_trans.list_students')}}
+    {{trans('main_trans.Gradutated_Students_lists')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -21,8 +21,7 @@
                     <div class="col-xl-12 mb-30">
                         <div class="card card-statistics h-100">
                             <div class="card-body">
-                                <a href="{{route('Students.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">{{trans('main_trans.Add_students')}}</a><br><br>
+
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -50,24 +49,12 @@
                                                 <td>{{$student->classroom->Name_class}}</td>
                                                 <td>{{$student->section->Name_section}}</td>
                                                 <td>
-
-                                                    <!-- Example single danger button -->
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            {{trans('Students_trans.Processes')}}
-                                                        </button>
-                                                        <div class="dropdown-menu">
-                                                            <a href="{{route('Students.show',$student->id)}}" class="dropdown-item " role="button" aria-pressed="true"><i class="fa fa-eye bg-warning"></i>  {{ trans('Students_trans.show') }}</a>
-                                                            <a href="{{route('Students.edit',$student->id)}}" class="dropdown-item" role="button" aria-pressed="true"><i class="fa fa-edit bg-success"></i>  {{ trans('Students_trans.edit') }}</a>
-                                                            <a href="{{route('FeeInvoices.show',$student->id)}}" class="dropdown-item " role="button" aria-pressed="true"><i class="fa fa-eye bg-warning "></i>  {{ trans('Students_trans.show_invoices') }}</a>
-                                                            <a type="button" class="dropdown-item " data-toggle="modal" data-target="#Delete_Student{{ $student->id }}" title=""><i class="fa fa-trash bg-danger"></i>  {{ trans('Students_trans.delete') }}</a>
-
-                                                        </div>
-                                                    </div>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#returnDate{{ $student->id }}" title="">{{ trans('Students_trans.Deleted_graduated_Student') }}</button>
+                                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Delete_Student{{ $student->id }}" title="">{{ trans('Students_trans.Deleted_Student') }}</button>
                                                 </td>
                                             </tr>
+                                        @include('pages.Students.graduate.returndate')
                                         @include('pages.Students.graduate.Delete')
-                                        @include('pages.Students.Delete')
                                         @endforeach
                                     </table>
                                 </div>
