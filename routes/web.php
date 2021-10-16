@@ -80,12 +80,27 @@ Route::group(
         Route::resource('Graduated', 'GraduatedController');
         Route::resource('Fee', 'FeeController');
         Route::resource('FeeInvoices', 'FeeInvoiceController');
+        Route::resource('ReceiptStudents', 'ReceiptStudentsController');
+        Route::resource('ProcessingFee', 'ProcessingFeeController');
+        Route::resource('PaymentSudents', 'PaymentController');
         Route::get('/Get_amount/{id}','FeeInvoiceController@Get_amount');
+        Route::resource('Attendance', 'AttendanceController');
 
     });
 
 
+    Route::group(['namespace'=> 'Subjects'],function (){
+        Route::resource('Subject', 'SubjectController');
 
+    });
+    Route::group(['namespace'=> 'Quizzs'],function (){
+        Route::resource('Quizzs', 'QuizzController');
+
+    });
+    Route::group(['namespace'=> 'Question'],function (){
+        Route::resource('questions', 'QuestionController');
+
+    });
 
 
 });

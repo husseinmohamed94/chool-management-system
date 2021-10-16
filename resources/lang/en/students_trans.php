@@ -37,4 +37,13 @@ return [
     'edit'      =>' edit students',
     'show'      =>'show students',
     'show_invoices'      =>'show invoices students',
+    'Receipt_Students'      =>' Receipt Students  ',
+    'edit_Receipt_Students'      =>'edit Receipt Students  ',
+    'Processing_Students'      =>'Processing Students  ',
+    'final_balance'      =>'final balance Students  ',
+    'Deleted_de'      =>'Are you sure to delete  ?   ',
+    'Deleted_debit'      =>'eAre you sure to delete the Debit ?  ',
+    'PaymentSudents'      =>'PaymentSudents  ',
+    'debit'                     =>'debit',
+    'description'                       =>'description',
 ];

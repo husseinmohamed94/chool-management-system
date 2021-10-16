@@ -137,6 +137,9 @@
                         <ul id="custom-page" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('Fee.index') }}"> {{trans('main_trans.tuition_fees')}}</a> </li>
                             <li> <a href="{{ route('FeeInvoices.index') }}"> {{trans('main_trans.invoices_fees')}}</a> </li>
+                            <li> <a href="{{ route('ReceiptStudents.index') }}"> {{trans('main_trans.ReceiptStudents')}}</a> </li>
+                            <li> <a href="{{ route('ProcessingFee.index') }}"> {{trans('main_trans.ProcessingFee')}}</a> </li>
+                            <li> <a href="{{ route('PaymentSudents.index') }}"> {{trans('main_trans.PaymentSudents')}}</a> </li>
 
                         </ul>
                     </li>
@@ -149,7 +152,35 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="authentication" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="login.html">{{trans('main_trans.Attendance')}}</a> </li>
+                            <li> <a href="{{route('Attendance.index')}}">{{trans('main_trans.Attendance')}}</a> </li>
+
+                        </ul>
+                    </li>
+    <!--subject المواد الرسيه -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#subject">
+                            <div class="pull-left"><i class="ti-id-badge"></i><span
+                                    class="right-nav-text"> {{trans('main_trans.subject')}}   </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="subject" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('Subject.index')}}">{{trans('main_trans.subject')}}</a> </li>
+
+                        </ul>
+                    </li>
+
+    <!--Exam المواد الرسيه -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#exam">
+                            <div class="pull-left"><i class="ti-id-badge"></i><span
+                                    class="right-nav-text"> {{trans('main_trans.Exams')}}   </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="exam" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('Quizzs.index')}}">{{trans('main_trans.muen_Exams')}}</a> </li>
+                            <li> <a href="{{route('questions.index')}}">{{trans('main_trans.add_question')}}</a> </li>
 
                         </ul>
                     </li>

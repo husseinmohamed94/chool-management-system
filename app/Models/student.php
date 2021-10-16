@@ -32,6 +32,12 @@ class student extends Model
     public  function myparent(){
         return $this->belongsTo('App\Models\MyParent','parent_id');
     }
+    public  function studentaccount(){
+        return $this->hasMany('App\Models\StudentAccount','student_id');
+    }
+    public  function attendance(){
+        return $this->hasMany('App\Models\Attendance','student_id');
+    }
 
     //علاقة بين الطلاب والصور لجب صور الطالب
     public function images()

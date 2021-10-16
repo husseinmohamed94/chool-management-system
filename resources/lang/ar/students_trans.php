@@ -37,6 +37,15 @@ return [
     'delete' => '  حذف بيانات الطالب',
     'edit'              => 'تعديل بيانات الطالب',
     'show'              => ' عرض بيانات الطالب',
-    'show_invoices'              => ' عرض بيانات  فاتورة الطالب',
+    'show_invoices'              => '  اضافة   فاتورة الطالب',
+    'Receipt_Students'              => '  سند قبض ',
+    'edit_Receipt_Students'              => '  تعديل سند قبض ',
+    'Processing_Students'              => '    استبعاد رسوم ',
+    'final_balance'              => '    رصيد الطالب  ',
+    'PaymentSudents'              => '    سند صرف  ',
+    'Deleted_de'              => '  حذف سند ؟ ',
+    'Deleted_debit'              => '  هل انت متاكد من حذف  السند ؟ ',
+    'debit'                          =>'المبلغ',
+    'description'                            =>'البيان',
 
 ];

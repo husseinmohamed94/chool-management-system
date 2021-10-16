@@ -55,8 +55,8 @@ class FeeInvoiceRepository implements FeeInvoiceRepositoryInterface
                 $StudentAccount->type = 'invoice';
                 $StudentAccount->fee_invoice_id = $Fees->id;
                 $StudentAccount->student_id = $List_Fee['student_id'];
-                $StudentAccount->Grade_id = $request->Grade_id;
-                $StudentAccount->Classroom_id = $request->Classroom_id;;
+               // $StudentAccount->Grade_id = $request->Grade_id;
+                //$StudentAccount->Classroom_id = $request->Classroom_id;;
                 $StudentAccount->Debit = $List_Fee['amount'];
                 $StudentAccount->credit = 0.00;
                 $StudentAccount->description = $List_Fee['description'];
