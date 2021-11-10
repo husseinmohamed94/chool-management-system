@@ -170,7 +170,7 @@
                         </ul>
                     </li>
 
-    <!--Exam المواد الرسيه -->
+    <!--Exam الاختبارات  -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#exam">
                             <div class="pull-left"><i class="ti-id-badge"></i><span
@@ -185,6 +185,30 @@
                         </ul>
                     </li>
 
+                    <!--libraye ألمكتبة   -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#library">
+                            <div class="pull-left"><i class="ti-id-badge"></i><span
+                                    class="right-nav-text"> {{trans('main_trans.library')}}   </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="library" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('library.index')}}">{{trans('main_trans.mune_library')}}</a> </li>
+                        </ul>
+                    </li>
+                    <!--zoom حصص اولاين  -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#zoom">
+                            <div class="pull-left"><i class="ti-id-badge"></i><span
+                                    class="right-nav-text"> {{trans('main_trans.zoomintrgation')}}   </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="zoom" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('online_Classes.index')}}">{{trans('main_trans.inzoomintrgation')}}</a> </li>
+                        </ul>
+                    </li>
                     <!-- menu item Multi level-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#multi-level">

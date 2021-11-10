@@ -85,6 +85,8 @@ Route::group(
         Route::resource('PaymentSudents', 'PaymentController');
         Route::get('/Get_amount/{id}','FeeInvoiceController@Get_amount');
         Route::resource('Attendance', 'AttendanceController');
+        Route::resource('library', 'LibraryController');
+        Route::get('download/{filename}', 'LibraryController@download')->name('library.download');
 
     });
 
@@ -99,8 +101,13 @@ Route::group(
     });
     Route::group(['namespace'=> 'Question'],function (){
         Route::resource('questions', 'QuestionController');
-
     });
+    Route::group(['namespace'=> 'onlineClasses'],function (){
+        Route::get('indirect', 'OnlineClassesController@indirectCreate')->name('indirect.create');
+        Route::post('indirect', 'OnlineClassesController@indirectstore')->name('indirect.store');
+        Route::resource('online_Classes', 'OnlineClassesController');
+    });
+
 
 
 });

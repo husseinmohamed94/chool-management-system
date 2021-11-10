@@ -1,15 +1,14 @@
-
 @extends('layouts.master')
 @section('css')
     @toastr_css
 @section('title')
-    {{trans('main_trans.subject')}}
+    {{trans('main_trans.zoomintrgation')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{trans('main_trans.subject')}}
+    {{trans('main_trans.zoomintrgation')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -18,12 +17,12 @@
         <div class="row">
             <div class="col-sm-6">
                 <h4 class="mb-0"> </h4>
-                <h3>{{trans('main_trans.Add_subject')}}</h3>
+                <h3>{{trans('main_trans.add_zoomintrgation')}}</h3>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
                     <li class="breadcrumb-item"><a href="#" class="default-color">{{trans('main_trans.Dashboard')}}</a></li>
-                    <li class="breadcrumb-item active">    {{trans('main_trans.subject')}}</li>
+                    <li class="breadcrumb-item active">    {{trans('main_trans.zoomintrgation')}}</li>
                 </ol>
             </div>
         </div>
@@ -40,53 +39,32 @@
                         <ul>
                           @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
-                    @endforeach
-                    </ul>
+                  @endforeach
+                          </ul>
                 </div>
-                @endif
-               --}}
-                    <form method="post"  action="{{ route('Subject.update',$subject->id) }}" autocomplete="" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <input type="hidden" name="id" value="{{$subject->id}}">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{trans('Subject_trans.name_ar')}} : <span class="text-danger">*</span></label>
-                                    <input   value="{{$subject->getTranslation('name','ar')}}" type="text" name="name_ar"  class="form-control">
-                                </div>
-                                 @error('name_ar')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+              @endif --}}
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{trans('Subject_trans.name_en')}} : <span class="text-danger">*</span></label>
-                                    <input   value="{{$subject->getTranslation('name','en')}}" class="form-control" name="name_en" type="text" >
-                                </div>
-                                   @error('name_en')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
+                    <form method="post"  action="{{ route('online_Classes.store') }}" autocomplete="" enctype="multipart/form-data">
+                        @csrf
 
 
                         <div class="row">
 
                             <div class="col-md-4">
                                 <label for="inputName"
-                                       class="control-label">{{ trans('Section_trans.seion_grade') }}</label>
+                                       class="control-label">{{ trans('onlineclasses_trans.Grade') }}</label>
                                 <select name="Grade_id" class="custom-select"
                                         onchange="console.log($(this).val())">
                                     <!--placeholder-->
-                                    <option value="{{$subject->grade->id }}"> {{$subject->grade->Name }}
+                                    <option value="" selected
+                                            disabled>{{ trans('onlineclasses_trans.Grade') }}
+                                    </option>
                                     @foreach ($Grades as $Grade)
                                         <option value="{{ $Grade->id }}"> {{ $Grade->Name }}
                                         </option>
                                     @endforeach
                                 </select>
-                                 @error('Grade_id')
+                                @error('Grade_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -95,39 +73,62 @@
 
                             <div class="col-md-4">
                                 <label for="inputName"
-                                       class="control-label">{{ trans('Section_trans.name_class') }}</label>
-
-                                <select  name="Class_id" class="custom-select">
-                                    <option value="{{$subject->classroom->id }}"> {{$subject->classroom->Name_class }}
+                                       class="control-label">{{ trans('onlineclasses_trans.classrooms') }}</label>
+                                <select name="Classroom_id" class="custom-select">
 
                                 </select>
-                                  @error('Class_id')
+                                @error('Classroom_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div><br>
 
-
                             <div class="col-md-4">
-                                <label for="inputName"
-                                       class="control-label">{{ trans('Section_trans.name_teacher') }}</label>
-                                <select  name="teacher_id" class="custom-select">
-                                    <!--placeholder-->
-                                    <option value="{{$subject->teacher->id }}"> {{$subject->teacher->Name }}
-
-                                @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}"> {{ $teacher->Name }}</option>
-                                    @endforeach
+                                <label for="section_id">{{trans('onlineclasses_trans.section')}} : </label>
+                                <select class="custom-select mr-sm-2" name="section_id" required>
                                 </select>
-                                   @error('teacher_id')
+                                @error('section_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
 
+
                         </div><br>
 
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>{{trans('onlineclasses_trans.topic')}} : <span class="text-danger">*</span></label>
+                                    <input  type="text" name="topic"  class="form-control">
+                                </div>
+                                @error('topic')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Subject_trans.submit')}}</button>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>{{trans('onlineclasses_trans.start_at')}} : <span class="text-danger">*</span></label>
+                                    <input  class="form-control" name="start_time" type="date" >
+                                </div>
+                                @error('start_at')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>{{trans('onlineclasses_trans.duration')}} : <span class="text-danger">*</span></label>
+                                    <input  class="form-control" name="duration" type="text" >
+                                </div>
+                                @error('duration')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+
+
+                        </div>
+                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('onlineclasses_trans.submit')}}</button>
                     </form>
 
                 </div>
@@ -171,8 +172,3 @@
 
 
 @endsection
-
-
-
-
-

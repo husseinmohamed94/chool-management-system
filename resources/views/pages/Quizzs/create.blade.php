@@ -87,20 +87,24 @@
                             </div>
                             <div class="col">
                                 <label for="inputName"
-                                       class="control-label">{{ trans('Section_trans.name_teacher') }}</label>
+                                       class="control-label">{{ trans('quizz_trans.subject') }}</label>
                                 <select  name="subject_id" class="custom-select">
                                     <!--placeholder-->
-                                    @foreach ($subjects as $subject)
+                                    <option  value="" selected>{{ trans('quizz_trans.Choose') }} </option>
+
+                                @foreach ($subjects as $subject)
                                         <option value="{{ $subject->id }}"> {{ $subject->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col">
                                 <label for="inputName"
-                                       class="control-label">{{ trans('Section_trans.name_teacher') }}</label>
+                                       class="control-label">{{ trans('quizz_trans.teacher') }}</label>
                                 <select  name="teacher_id" class="custom-select">
                                     <!--placeholder-->
-                                    @foreach ($teachers as $teacher)
+                                    <option  value="" selected>{{ trans('quizz_trans.Choose') }} </option>
+
+                                @foreach ($teachers as $teacher)
                                         <option value="{{ $teacher->id }}"> {{ $teacher->Name }}</option>
                                     @endforeach
                                 </select>

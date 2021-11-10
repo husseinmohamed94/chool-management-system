@@ -28,12 +28,21 @@ class QuizzeRepository implements QuizzeRepositoryInterface
 
     public function store($request)
     {
+        $validatedData = $request->validate([
+            'name_en' => 'required',
+            'name_ar' => 'required',
+            'subject_id' => 'required',
+            'Grade_id' => 'required|',
+            'Classroom_id' => 'required',
+            'section_id' => 'required',
+            'teacher_id' => 'required',
+        ]);
        try {
            $quizz = new Quizze();
            $quizz->name               = ['en' => $request->name_en, 'ar' => $request->name_ar];
-            $quizz->subject_id            = $request->Grade_id;
-            $quizz->Grade_id            = $request->Grade_id;
-            $quizz->Classroom_id        = $request->Classroom_id;
+            $quizz->subject_id        = $request->subject_id;
+            $quizz->Grade_id          = $request->Grade_id;
+            $quizz->Classroom_id      = $request->Classroom_id;
             $quizz->section_id        = $request->section_id;
             $quizz->teacher_id        = $request->teacher_id;
 
@@ -62,6 +71,15 @@ class QuizzeRepository implements QuizzeRepositoryInterface
 
     public function update($request)
     {
+        $validatedData = $request->validate([
+            'name_en' => 'required',
+            'name_ar' => 'required',
+            'subject_id' => 'required',
+            'Grade_id' => 'required|',
+            'Classroom_id' => 'required',
+            'section_id' => 'required',
+            'teacher_id' => 'required',
+        ]);
         try {
             $quizz =  Quizze::findOrFail($request->id);
             $quizz->name               = ['en' => $request->name_en, 'ar' => $request->name_ar];

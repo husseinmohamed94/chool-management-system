@@ -29,12 +29,22 @@ class subjectRepository implements subjectRepositoryInterface
 
     public function store($request)
     {
+        $validatedData = $request->validate([
+        //    'name_ar' => 'required|unique:subjects,name->ar'
+
+            'name_ar' => 'required',
+            'name_en' => 'required',
+            'Grade_id' => 'required',
+            'Class_id' => 'required',
+            'teacher_id' => 'required',
+        ]);
         try {
             $subject = new Subject();
             $subject->name                      =['en' => $request->name_en, 'ar' => $request->name_ar];
             $subject->Grade_id            = $request->Grade_id;
             $subject->Classroom_id        = $request->Class_id;
             $subject->teacher_id         = $request->teacher_id;
+
 
             $subject->save();
             toastr()->success(trans('messages.success'));
@@ -57,6 +67,13 @@ class subjectRepository implements subjectRepositoryInterface
 
     public function update($request)
     {
+        $validatedData = $request->validate([
+            'name_ar' => 'required',
+            'name_en' => 'required',
+            'Grade_id' => 'required',
+            'Class_id' => 'required',
+            'teacher_id' => 'required',
+        ]);
         try {
             $subject =  Subject::findOrFail($request->id);
             $subject->name                      =['en' => $request->name_en, 'ar' => $request->name_ar];

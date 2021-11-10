@@ -34,15 +34,15 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                  @endforeach
+                          </ul>
+                </div>
+              @endif --}}
 
                     <form method="post"  action="{{ route('Subject.store') }}" autocomplete="" enctype="multipart/form-data">
                         @csrf
@@ -52,6 +52,9 @@
                                     <label>{{trans('Subject_trans.name_ar')}} : <span class="text-danger">*</span></label>
                                     <input  type="text" name="name_ar"  class="form-control">
                                 </div>
+                                @error('name_ar')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-md-6">
@@ -59,9 +62,13 @@
                                     <label>{{trans('Subject_trans.name_en')}} : <span class="text-danger">*</span></label>
                                     <input  class="form-control" name="name_en" type="text" >
                                 </div>
+                                @error('name_en')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-                        </div>
 
+
+                        </div>
 
                         <div class="row">
 
@@ -79,6 +86,9 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @error('Grade_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <br>
 
@@ -89,6 +99,9 @@
                                 <select name="Class_id" class="custom-select">
 
                                 </select>
+                                @error('Class_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div><br>
 
 
@@ -96,11 +109,16 @@
                                 <label for="inputName"
                                        class="control-label">{{ trans('Section_trans.name_teacher') }}</label>
                                 <select  name="teacher_id" class="custom-select">
+                                    <option value="">حدد من القائمة</option>
+
                                     <!--placeholder-->
                                     @foreach ($teachers as $teacher)
                                         <option value="{{ $teacher->id }}"> {{ $teacher->Name }}</option>
                                     @endforeach
                                 </select>
+                                @error('teacher_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
 

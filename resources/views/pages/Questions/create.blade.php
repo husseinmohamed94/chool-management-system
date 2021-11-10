@@ -34,53 +34,103 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                  @endforeach
+                          </ul>
+                </div>
+              @endif --}}
 
                     <form method="post"  action="{{ route('questions.store') }}" autocomplete="" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label>{{trans('question_trans.titel')}} : <span class="text-danger">*</span></label>
-                                    <input  type="text" name="title"  class="form-control">
+                                    <label>{{trans('question_trans.titel_ar')}} : <span class="text-danger">*</span></label>
+                                    <input  type="text" name="title_ar"  class="form-control">
                                 </div>
+                                @error('title_ar')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>{{trans('question_trans.titel_en')}} : <span class="text-danger">*</span></label>
+                                    <input  type="text" name="title_en"  class="form-control">
+                                </div>
+                                @error('title_en')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                             <div class="col">
+                                <div class="form-group">
+                                    <label>{{trans('question_trans.answers_ar')}} : <span class="text-danger">*</span></label>
+                                    <textarea  class="form-control" name="answers_ar"  ></textarea>
+                                </div>
+                                 @error('answers_ar')
+                                 <div class="alert alert-danger">{{ $message }}</div>
+                                 @enderror
+                             </div>
                         </div>
                         <div class="row">
                              <div class="col">
                                 <div class="form-group">
-                                    <label>{{trans('question_trans.answers')}} : <span class="text-danger">*</span></label>
-                                    <textarea  class="form-control" name="answers"  ></textarea>
+                                    <label>{{trans('question_trans.answers_en')}} : <span class="text-danger">*</span></label>
+                                    <textarea  class="form-control" name="answers_en"  ></textarea>
                                 </div>
+                                 @error('answers_en')
+                                 <div class="alert alert-danger">{{ $message }}</div>
+                                 @enderror
                              </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label>{{trans('question_trans.right_answer')}} : <span class="text-danger">*</span></label>
-                                    <input  type="text" name="right_answer"  class="form-control">
+                                    <label>{{trans('question_trans.right_answer_ar')}} : <span class="text-danger">*</span></label>
+                                    <input  type="text" name="right_answer_ar"  class="form-control">
                                 </div>
+                                @error('right_answer_ar')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>{{trans('question_trans.right_answer_en')}} : <span class="text-danger">*</span></label>
+                                    <input  type="text" name="right_answer_en"  class="form-control">
+                                </div>
+                                @error('right_answer_en')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+
                         <div class="row">
                             <div class="col">
                                 <label for="inputName"
                                        class="control-label">{{ trans('question_trans.subject') }}</label>
                                 <select  name="quizze_id" class="custom-select">
+                                    <option value="" selected>{{ trans('question_trans.Choose') }}</option>
+
                                     <!--placeholder-->
                                     @foreach ($quizzes as $quizze)
                                         <option value="{{ $quizze->id }}"> {{ $quizze->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('quizze_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col">
                                 <label for="inputName" class="control-label">{{ trans('question_trans.score') }}</label>
@@ -93,6 +143,9 @@
                                         <option value="20">20</option>
 
                                 </select>
+                                @error('score')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                         </div><br/>

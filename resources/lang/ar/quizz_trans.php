@@ -13,6 +13,7 @@ return [
     'classrooms' => 'الصف الدراسي',
     'section' => 'القسم',
     'subject' => 'اسم الماده',
+    'Choose' => 'اختار من القائمة',
     'Processes' => 'العمليات',
     'submit' => 'تاكيد',
     'Close' => 'اغلاق',

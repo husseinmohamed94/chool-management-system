@@ -25,12 +25,23 @@ class QuestionRepository implements QuestionRepositoryInterface
 
     public function store($request)
     {
+        $validatedData = $request->validate([
+            'title_en' => 'required',
+            'title_ar' => 'required',
+            'answers_en' => 'required',
+            'answers_ar' => 'required',
+            'right_answer_en' => 'required',
+            'right_answer_ar' => 'required',
+            'score' => 'required|numeric',
+            'quizze_id' => 'required',
+
+        ]);
         try {
 
             $question                   = new Question();
-            $question->title            = $request->title;
-            $question->answers          = $request->answers;
-            $question->right_answer     = $request->right_answer;
+            $question->title            = ['en' => $request->title_en,'ar'=>$request->title_ar];
+            $question->answers          = ['en' => $request->answers_en,'ar'=>$request->answers_ar];
+            $question->right_answer     = ['en' =>$request->right_answer_en,'ar'=>$request->right_answer_ar];
             $question->score            = $request->score;
             $question->quizze_id        = $request->quizze_id;
 
@@ -53,12 +64,23 @@ class QuestionRepository implements QuestionRepositoryInterface
 
     public function update($request)
     {
+        $validatedData = $request->validate([
+            'title_en' => 'required',
+            'title_ar' => 'required',
+            'answers_en' => 'required',
+            'answers_ar' => 'required',
+            'right_answer_en' => 'required',
+            'right_answer_ar' => 'required',
+            'score' => 'required|numeric',
+            'quizze_id' => 'required',
+
+        ]);
         try {
 
             $question                   =  Question::findOrFail($request->id);
-            $question->title            = $request->title;
-            $question->answers          = $request->answers;
-            $question->right_answer     = $request->right_answer;
+            $question->title            = ['en' => $request->title_en,'ar'=>$request->title_ar];
+            $question->answers          = ['en' => $request->answers_en,'ar'=>$request->answers_ar];
+            $question->right_answer     = ['en' =>$request->right_answer_en,'ar'=>$request->right_answer_ar];
             $question->score            = $request->score;
             $question->quizze_id        = $request->quizze_id;
 

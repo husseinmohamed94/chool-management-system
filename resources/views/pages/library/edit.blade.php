@@ -1,15 +1,14 @@
-
 @extends('layouts.master')
 @section('css')
     @toastr_css
 @section('title')
-    {{trans('main_trans.subject')}}
+    {{trans('main_trans.library')}}
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{trans('main_trans.subject')}}
+    {{trans('main_trans.library')}}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -18,12 +17,12 @@
         <div class="row">
             <div class="col-sm-6">
                 <h4 class="mb-0"> </h4>
-                <h3>{{trans('main_trans.Add_subject')}}</h3>
+                <h3>{{trans('main_trans.Add_library')}}</h3>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
                     <li class="breadcrumb-item"><a href="#" class="default-color">{{trans('main_trans.Dashboard')}}</a></li>
-                    <li class="breadcrumb-item active">    {{trans('main_trans.subject')}}</li>
+                    <li class="breadcrumb-item active">    {{trans('main_trans.library')}}</li>
                 </ol>
             </div>
         </div>
@@ -40,53 +39,55 @@
                         <ul>
                           @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
-                    @endforeach
-                    </ul>
+                  @endforeach
+                          </ul>
                 </div>
-                @endif
-               --}}
-                    <form method="post"  action="{{ route('Subject.update',$subject->id) }}" autocomplete="" enctype="multipart/form-data">
+              @endif --}}
+
+                    <form method="post"  action="{{ route('library.update',$library->id) }}" autocomplete="" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
-                        <input type="hidden" name="id" value="{{$subject->id}}">
+                        @method('put')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{trans('Subject_trans.name_ar')}} : <span class="text-danger">*</span></label>
-                                    <input   value="{{$subject->getTranslation('name','ar')}}" type="text" name="name_ar"  class="form-control">
+                                    <input name="id" type="hidden" value="{{$library->id}}">
+                                    <label>{{trans('llibrary_trans.name_ar')}} : <span class="text-danger">*</span></label>
+                                    <input  type="text" value="{{$library->getTranslation('title','ar')}}" name="title_ar"  class="form-control">
                                 </div>
-                                 @error('name_ar')
+                                @error('name_ar')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>{{trans('Subject_trans.name_en')}} : <span class="text-danger">*</span></label>
-                                    <input   value="{{$subject->getTranslation('name','en')}}" class="form-control" name="name_en" type="text" >
+                                    <label>{{trans('llibrary_trans.name_en')}} : <span class="text-danger">*</span></label>
+                                    <input  class="form-control"  value="{{$library->getTranslation('title','en')}}"  name="title_en" type="text" >
                                 </div>
-                                   @error('name_en')
+                                @error('name_en')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
 
+
+                        </div>
 
                         <div class="row">
 
                             <div class="col-md-4">
                                 <label for="inputName"
-                                       class="control-label">{{ trans('Section_trans.seion_grade') }}</label>
+                                       class="control-label">{{ trans('onlineclasses_trans.Grade') }}</label>
                                 <select name="Grade_id" class="custom-select"
                                         onchange="console.log($(this).val())">
                                     <!--placeholder-->
-                                    <option value="{{$subject->grade->id }}"> {{$subject->grade->Name }}
-                                    @foreach ($Grades as $Grade)
+                                    <option value="{{ $library->grade->id }}"> {{ $library->grade->Name }}
+
+                                @foreach ($Grades as $Grade)
                                         <option value="{{ $Grade->id }}"> {{ $Grade->Name }}
                                         </option>
                                     @endforeach
                                 </select>
-                                 @error('Grade_id')
+                                @error('Grade_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -95,39 +96,41 @@
 
                             <div class="col-md-4">
                                 <label for="inputName"
-                                       class="control-label">{{ trans('Section_trans.name_class') }}</label>
-
-                                <select  name="Class_id" class="custom-select">
-                                    <option value="{{$subject->classroom->id }}"> {{$subject->classroom->Name_class }}
+                                       class="control-label">{{ trans('onlineclasses_trans.classrooms') }}</label>
+                                <select name="Classroom_id" class="custom-select">
+                                    <option value="{{ $library->classroom->id }}"> {{ $library->classroom->Name_class }}
 
                                 </select>
-                                  @error('Class_id')
+                                @error('Classroom_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div><br>
 
-
                             <div class="col-md-4">
-                                <label for="inputName"
-                                       class="control-label">{{ trans('Section_trans.name_teacher') }}</label>
-                                <select  name="teacher_id" class="custom-select">
-                                    <!--placeholder-->
-                                    <option value="{{$subject->teacher->id }}"> {{$subject->teacher->Name }}
+                                <label for="section_id">{{trans('onlineclasses_trans.section')}} : </label>
+                                <select class="custom-select mr-sm-2" name="section_id" required>
+                                    <option value="{{ $library->section->id }}"> {{ $library->section->Name_section }}
 
-                                @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}"> {{ $teacher->Name }}</option>
-                                    @endforeach
                                 </select>
-                                   @error('teacher_id')
+                                @error('section_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
 
-
                         </div><br>
 
+                        <div class="row">
+                            <div class="col">
+                                <embed  src="{{ URL::asset('attachments/Library/'.$library->file_name)}}" type="application/pdf"   height="150px" width="100px"><br><br>
 
-                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('Subject_trans.submit')}}</button>
+                                <label for="inputName" class="control-label">{{ trans('llibrary_trans.Attachments') }}</label>
+                                <input  name="file_name" accept="application/pdf" class="form-control" type="file">
+                                @error('file_name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{trans('llibrary_trans.submit')}}</button>
                     </form>
 
                 </div>
@@ -171,8 +174,3 @@
 
 
 @endsection
-
-
-
-
-
