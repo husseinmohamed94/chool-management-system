@@ -73,4 +73,6 @@ class studentController extends Controller
         return $this->Student->Delete_attachment($request);
 
     }
+
+
 }

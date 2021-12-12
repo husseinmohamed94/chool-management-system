@@ -21,7 +21,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME    = '/dashboard';
+    public const STUDENT = '/Student/dashboard';
+    public const TEACHER = '/dashboard';
+    public const PARENT  = '/dashboard';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -61,15 +64,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/student.php'));
     }
 
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
     protected function mapApiRoutes()
     {
         Route::prefix('api')

@@ -40,7 +40,7 @@ class LibraryRepository implements LibraryRepositoryInterface
                  'teacher_id'            => 1,
              ]);
 
-             $this->uploadFile($request,'file_name');
+             $this->uploadFile($request,'file_name','Library');
 
             toastr()->success(trans('messages.success'));
             return redirect()->route('library.index');
@@ -66,8 +66,8 @@ class LibraryRepository implements LibraryRepositoryInterface
 
 
             if ($request->hasfile('file_name')){
-                $this->deletefile($book->file_name);
-                $this->uploadFile($request,'file_name');
+                $this->deletefile($book->file_name,'attachments/Library/');
+                $this->uploadFile($request,'file_name','Library');
 
                $file_name_new = $request->file('file_name')->getClientOriginalName();
                $book->file_name = $book->file_name !== $file_name_new ? $file_name_new : $book->file_name;
