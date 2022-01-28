@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\student;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +15,8 @@ class HomeController extends Controller
     }
     public function dashboard()
     {
+       // $datacount['student']=student::count();
+
         return view('dashboard');
     }
 }

@@ -63,7 +63,7 @@ Route::group(
 
     //***************************** Parent ***********************
 
-    Route::view('add_Parent','livewire.show_Form');
+    Route::view('add_Parent','livewire.show_Form')->name('add_Parent');
     //***************************** Teachers ***********************
     Route::group(['namespace'=> 'Teachers'],function (){
         Route::resource('Teachers', 'TeacherController');

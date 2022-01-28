@@ -2,6 +2,7 @@
 
 return [
     'Dashboard' => ' الرئسية',
+    'Admin' => ' لوحة تحكم الادمن',
     'garde' => 'المراحل الدراسية',
     'garde_list' => 'قائمة المراحل الدراسية',
     'sections' => 'الاقسام',
@@ -44,5 +45,11 @@ return [
     'Online_classes' => 'حصص اولاين',
     'Settings' => 'الاعدادات',
     'Users' => 'المستخدمين',
+    'invoices' => 'الفواتير',
+    'countstudents' => 'عدد الطلاب',
+    'countteacher' => 'عدد المعلمين',
+    'countparent' => 'عدد اولياء الامور',
+    'countSection' => 'عدد الفصوول الدرسي ',
+
 
 ];

@@ -2,6 +2,8 @@
 
 return [
     'Dashboard'                                         => 'Dashboard',
+    'Admin' => '  Dashboard Admin ',
+
     'garde'                                             =>'Gardes',
     'garde_list'                                        =>'Garde List',
     'sections'                                             =>'Sections',
@@ -40,5 +42,10 @@ return [
     'Online_classes'                                             =>'Online classes',
     'Settings'                                             =>' Settings',
     'Users'                                             =>' Users',
+    'invoices'                                             =>' invoices',
+    'countstudents'                                             =>' count students',
+    'countteacher'                                             =>' count teacher',
+    'countparent'                                             =>' count parent',
+    'countSection'                                             =>' count Section',
 
 ];
